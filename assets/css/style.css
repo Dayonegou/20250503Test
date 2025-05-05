@@ -1,0 +1,58 @@
+/* モダンCSSリセット */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+/* モダンCSSリセット */
+
+body{
+    color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    background: url(../img/Hoshizora.jpg) no-repeat center / cover fixed; ;
+
+}
+
+a{
+    color: #ffffff;
+}
+
+main{
+    width: 100%;
+    height: 60vh;
+}
+
+button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }  
+
+header a,
+footer{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.title{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;  /* 横 */
+    align-items: center;      /* 縦 */
+    text-align: center;
+}
+
+#sec-main{
+    display: none;
+}
+
