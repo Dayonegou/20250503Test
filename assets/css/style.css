@@ -43,6 +43,17 @@ footer{
     text-align: center;
 }
 
+#loading{
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;  /* 横 */
+    align-items: center;      /* 縦 */
+    text-align: center;
+    background: #bebebebd;
+}
+
 .title{
     display: flex;
     width: 100%;
@@ -50,6 +61,28 @@ footer{
     justify-content: center;  /* 横 */
     align-items: center;      /* 縦 */
     text-align: center;
+}
+
+#explanation{
+    display:none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;  /* 横 */
+    align-items: center;      /* 縦 */
+    background: #bebebebd;
+}
+
+#explanation > .ex_cont{
+    width: 50vh;
+    height: 50vh;
+    text-align: center;
+    color: #220676;
+    background-color: #ffffff;
+}
+
+#explanation > .ex_cont button{
+    color: #220676;
 }
 
 #sec-main{

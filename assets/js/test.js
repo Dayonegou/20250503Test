@@ -2,11 +2,8 @@
 window.onload = () => {
 
     let player //外から読み込めるように定義
-    let isVideoReady = false; //←楽曲の読み込みフラグ
-    let pendingPlay = false; //←楽曲読み込み未完了時のフラグ
-    const infoEl = document.getElementById("songInfo");
-    const playBtn = document.getElementById("playBtn");
-    
+    const SongName = document.getElementById("SongName");
+    const Songsakusya = document.getElementById("Songsakusya");
     //ライブラリから設計図を取ってくる
     const { Player, stringToDataUrl } = TextAliveApp; 
     
@@ -24,7 +21,7 @@ window.onload = () => {
     onAppReady: (app) => {
         //準備できたらやることを書く
         console.log("準備完了",app);
-
+        
         if(!app.managed){
             //managed ←ホストに接続できているかどうか
             //曲を入れる
@@ -34,34 +31,44 @@ window.onload = () => {
         //console.log(player); // クラスか確認
         //console.log(typeof player.requestPlay); // "function" でなければ何かおかしい！
         
-        }
+        }    
     },
-    onVideoReady: (v) => {
-        console.log("動画準備OK！",v);
-        const song = v.data.song;
+    onVideoReady: (video) => {
+        console.log("動画準備OK！",video);
+        const song = player.data.song;
         const songName = song?.name || "曲名なし";
-        const artist = song?.artist?.name || "アーティスト名なし";
+        const artist = song?.artist.name || "情報なし";
     
-        infoEl.textContent = `♪ ${songName} / ${artist}`;
-        playBtn.disabled = false;
-        
+        SongName.textContent = `${songName}`;
+        Songsakusya.textContent = `${artist}`;
+      },
+      onTimerReady() {
+        document.getElementById("loading").style.display = "none";
       }
   });
 
     //クリックしたら、楽曲の情報が各要素に入る
     /* 各要素を取得 */
-    let StartBtn = document.getElementById("startBtn");
+    let firstBtn = document.getElementById("firstBtn");
     let Title = document.querySelector(".title")
+
+    let explanation = document.getElementById("explanation");
+    let StartBtn = document.getElementById("startBtn");
+    
     let SecMain = document.getElementById("sec-main");
 
-    /* startを押したら、要素を出現 */
-    StartBtn.addEventListener("click", () => {
+    /* firstを押したら、説明要素を出現 */
+    firstBtn.addEventListener("click", () => {
         Title.style.display = "none"
-        SecMain.style.display = "inline-block"
+        explanation.style.display = "flex"
     });
 
-     // ボタンで再生
-     playBtn.addEventListener("click", () => {
+    /* startを押したら、メイン要素を出現 */
+    StartBtn.addEventListener("click", () => {
+        explanation.style.display = "none"
+        SecMain.style.display = "inline-block"
         player.requestPlay(); // 再生開始
-   });
+    });
+
+    
 };
