@@ -35,6 +35,8 @@ window.onload = () => {
     
         SongName.textContent = `${songName}`;
         Songsakusya.textContent = `${artist}`;
+        
+        //歌詞表示1
         while (ani_word) {
             ani_word.animate = animateWord;
             ani_word = ani_word.next;
@@ -54,28 +56,6 @@ window.onload = () => {
   };
 
 
-//カウントダウン処理
-function startCountdown(seconds, onComplete) {
-    const countdownEl = document.getElementById("countdown");
-    const countText = document.getElementById("countText");
-  
-    countdownEl.style.display = "flex";
-    countText.textContent = seconds;
-  
-    let count = seconds;
-    const interval = setInterval(() => {
-      count--;
-      if (count > 0) {
-        countText.textContent = count.toString();
-      } else {
-        clearInterval(interval);
-        countdownEl.style.display = "none";
-        if (typeof onComplete === "function") {
-          onComplete();
-        }
-      }
-    }, 1000);
-  }
   
 //ボタン操作
     /* 各要素を取得 */
@@ -131,5 +111,27 @@ function startCountdown(seconds, onComplete) {
             player.requestPlay(); // ✅ カウントダウン後に再生
           });
     });
-    
+
+    //カウントダウン処理
+function startCountdown(seconds, onComplete) {
+    const countdownEl = document.getElementById("countdown");
+    const countText = document.getElementById("countText");
+  
+    countdownEl.style.display = "flex";
+    countText.textContent = seconds;
+  
+    let count = seconds;
+    const interval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        countText.textContent = count.toString();
+      } else {
+        clearInterval(interval);
+        countdownEl.style.display = "none";
+        if (typeof onComplete === "function") {
+          onComplete();
+        }
+      }
+    }, 1000);
+  }
 };
